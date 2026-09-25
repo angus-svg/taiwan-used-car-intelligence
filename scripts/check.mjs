@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const required = ['index.html','styles.css','src/app.js','src/engine.js','src/data-source.js','data/model-catalog.json','data/fallback-models.json'];
+const required = ['index.html','styles.css','src/app.js','src/engine.js','src/engine-v02.js','src/data-source.js','data/model-catalog.json','data/fallback-models.json'];
 let ok = true;
 for (const file of required) {
   if (!fs.existsSync(new URL(`../${file}`, import.meta.url))) { console.error(`MISSING ${file}`); ok = false; }
