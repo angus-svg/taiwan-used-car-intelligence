@@ -1,0 +1,15 @@
+[
+  {"key":"Nissan Kicks","segment":"SUV","size":"小型跨界","tradeoff":"年份／油耗","tags":["都會通勤","小型SUV","預算效率"]},
+  {"key":"Honda HR-V","segment":"SUV","size":"小型SUV","tradeoff":"空間／保值","tags":["家庭","空間","保值"]},
+  {"key":"Mazda CX-3","segment":"SUV","size":"小型跨界","tradeoff":"質感／操控","tags":["都會","操控","質感"]},
+  {"key":"Suzuki Vitara","segment":"SUV","size":"小型SUV","tradeoff":"車格／四驅選項","tags":["SUV","實用","四驅選項"]},
+  {"key":"Mazda CX-5","segment":"SUV","size":"中型SUV","tradeoff":"車格／高里程","tags":["中型SUV","空間","質感"]},
+  {"key":"Toyota Corolla Cross","segment":"SUV","size":"小型SUV","tradeoff":"保值／車源量","tags":["熱門","油電選項","保值"]},
+  {"key":"Toyota RAV4","segment":"SUV","size":"中型SUV","tradeoff":"空間／年份","tags":["家庭","中型SUV","保值"]},
+  {"key":"Honda CR-V","segment":"SUV","size":"中型SUV","tradeoff":"空間／年份","tags":["家庭","空間","熱門"]},
+  {"key":"Mitsubishi Eclipse Cross","segment":"SUV","size":"中小型SUV","tradeoff":"動力／價格","tags":["渦輪","SUV","價格帶"]},
+  {"key":"Nissan X-Trail","segment":"SUV","size":"中型SUV","tradeoff":"空間／車齡","tags":["家庭","空間","中型SUV"]},
+  {"key":"Toyota Corolla Altis","segment":"Sedan","size":"中型房車","tradeoff":"保值／持有成本","tags":["省心","熱門","房車"]},
+  {"key":"Toyota Camry","segment":"Sedan","size":"中大型房車","tradeoff":"舒適／年份","tags":["舒適","房車","空間"]},
+  {"key":"Honda Fit","segment":"Hatchback","size":"小型掀背","tradeoff":"空間效率／油耗","tags":["小車","省油","空間機能"]}
+]

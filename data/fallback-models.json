@@ -1,0 +1,15 @@
+[
+  {"slug":"nissan-kicks","brand":"Nissan","model":"Kicks","annual_depreciation_pct":9.5,"year_prices_wan":{"2019":40.2,"2020":42.6,"2021":45.0,"2022":48.7}},
+  {"slug":"honda-hr-v","brand":"Honda","model":"HR-V","annual_depreciation_pct":8.5,"year_prices_wan":{"2018":38.5,"2019":45.5,"2020":48.0,"2021":52.0}},
+  {"slug":"mazda-cx-3","brand":"Mazda","model":"CX-3","annual_depreciation_pct":10.0,"year_prices_wan":{"2018":39.5,"2019":42.0,"2020":47.7}},
+  {"slug":"suzuki-vitara","brand":"Suzuki","model":"Vitara","annual_depreciation_pct":9.0,"year_prices_wan":{"2018":36.0,"2019":40.0,"2020":46.5}},
+  {"slug":"mazda-cx-5","brand":"Mazda","model":"CX-5","annual_depreciation_pct":9.5,"year_prices_wan":{"2017":43.0,"2018":50.6,"2019":55.0}},
+  {"slug":"mitsubishi-eclipse-cross","brand":"Mitsubishi","model":"Eclipse Cross","annual_depreciation_pct":11.0,"year_prices_wan":{"2019":36.8,"2020":42.0,"2021":47.0}},
+  {"slug":"toyota-corolla-cross","brand":"Toyota","model":"Corolla Cross","annual_depreciation_pct":7.5,"year_prices_wan":{"2021":58.0,"2022":62.0,"2023":68.0}},
+  {"slug":"toyota-rav4","brand":"Toyota","model":"RAV4","annual_depreciation_pct":7.5,"year_prices_wan":{"2018":52.0,"2019":60.0,"2020":66.0}},
+  {"slug":"honda-cr-v","brand":"Honda","model":"CR-V","annual_depreciation_pct":8.0,"year_prices_wan":{"2017":46.0,"2018":52.0,"2019":58.0}},
+  {"slug":"nissan-x-trail","brand":"Nissan","model":"X-Trail","annual_depreciation_pct":10.0,"year_prices_wan":{"2017":36.0,"2018":40.0,"2019":45.0}},
+  {"slug":"toyota-corolla-altis","brand":"Toyota","model":"Corolla Altis","annual_depreciation_pct":8.9,"year_prices_wan":{"2019":40.0,"2020":45.0,"2021":49.0}},
+  {"slug":"toyota-camry","brand":"Toyota","model":"Camry","annual_depreciation_pct":7.9,"year_prices_wan":{"2018":48.0,"2019":55.0,"2020":62.0}},
+  {"slug":"honda-fit","brand":"Honda","model":"Fit","annual_depreciation_pct":8.5,"year_prices_wan":{"2019":35.0,"2020":39.0,"2021":45.0}}
+]
