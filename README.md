@@ -6,7 +6,11 @@
 
 > 這個預算能換到什麼？這台現在這個價格合理嗎？多花／少花這筆錢實際換到什麼？
 
-## 已完成 V0.1
+## V0.2 與既有 V0.1 功能
+
+V0.2 在保留三入口的基礎上，加入 Year × Mileage Matrix、含里程情境／升級價差的 Budget Frontier，以及帶 confidence／sample size 的 Comparable Engine。所有數字區分 Observed／Derived／Unknown；里程調整為未校準情境，配對樣本數未知。詳見 [V0.2 模型假設與資料缺口](docs/V0.2_MODEL_NOTES.md)。
+
+離線驗證：`node scripts/check.mjs`、`node scripts/test-engine.mjs`、`node --test scripts/test-v02.mjs`（或 `npm test`，不需 npm install）。
 
 - 三個入口
   - 我有預算，幫我找車
@@ -64,7 +68,7 @@ Repository 內已包含 `.github/workflows/pages.yml`。
 
 ## 資料安全原則
 
-- `Observed`：真正觀察到的外部資料。
+- `Observed`：使用者提交的刊登數值（未查證）或可追溯的外部觀測；不等同成交紀錄。
 - `External Derived`：Carbook 等外部模型的估值。
 - `Our Derived`：本平台自己計算的比較與 trade-off。
 - `Unknown`：沒有資料就保持未知，不推定「沒有事故／沒有問題」。
@@ -74,7 +78,7 @@ Repository 內已包含 `.github/workflows/pages.yml`。
 ## 下一階段
 
 1. 導入政府車型／油耗 open data。
-2. 加入 Mileage Trade-off Matrix。
+2. 以有授權的年式／里程逐車資料校準 Mileage Matrix；補足配對樣本數。
 3. 加入 Trim / Equipment Normalizer。
 4. 建立自己的 Market Snapshot。
 5. 加入真實刊登資料來源與合法 feed。
