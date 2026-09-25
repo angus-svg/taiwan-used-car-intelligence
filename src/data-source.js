@@ -24,13 +24,17 @@ export async function loadFallbackModels() {
   return { models: await res.json(), source: '本機示範資料', live: false };
 }
 
-export async function estimateCar({ model, year, mileage, condition='normal' }) {
+export async function estimateCar({ model, year, mileage, condition='normal' }, {timeoutMs=9000}={}) {
   const url = new URL(CARBOOK_ESTIMATE);
   url.searchParams.set('model', model);
   if (year) url.searchParams.set('year', year);
   if (mileage !== '' && mileage != null) url.searchParams.set('mileage', mileage);
   url.searchParams.set('cond', condition);
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`估價 API HTTP ${res.status}`);
-  return res.json();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { cache: 'no-store', signal:controller.signal });
+    if (!res.ok) throw new Error(`估價 API HTTP ${res.status}`);
+    return await res.json();
+  } finally { clearTimeout(timer); }
 }
