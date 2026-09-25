@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="台灣中古車價格情報 MVP：預算探索、同款行情、刊登價格比較與殘值估算。" />
+  <title>CarValue TW — 中古車價格情報 MVP</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand-mark">CV</div>
+      <div>
+        <h1>CarValue TW</h1>
+        <p>中古車價格情報 MVP</p>
+      </div>
+    </div>
+    <div id="sourceStatus" class="status-pill status-loading">載入行情資料…</div>
+  </header>
+
+  <main class="container">
+    <section class="hero panel">
+      <div>
+        <div class="eyebrow">PRICE INTELLIGENCE FIRST</div>
+        <h2>先回答價格，再決定車。</h2>
+        <p>從預算、指定車款，或你已經看到的某一台車進入；所有入口最後都回到同一套價格比較邏輯。</p>
+      </div>
+      <div class="source-note">
+        <strong>資料基準</strong>
+        <span>即時行情／估值優先使用 Carbook 公開 API；若無法連線，會切換到本機示範資料。</span>
+      </div>
+    </section>
+
+    <section class="entry-grid" aria-label="購車入口">
+      <button class="entry-card active" data-mode="budget">
+        <span class="entry-number">01</span>
+        <strong>我有預算，幫我找車</strong>
+        <small>Budget Frontier｜先看同樣預算能換到哪些年份與車格</small>
+      </button>
+      <button class="entry-card" data-mode="model">
+        <span class="entry-number">02</span>
+        <strong>我已經知道要什麼車</strong>
+        <small>同款縱向比較｜年份 → 里程 → 價格 → 殘值</small>
+      </button>
+      <button class="entry-card" data-mode="listing">
+        <span class="entry-number">03</span>
+        <strong>幫我看這台值不值</strong>
+        <small>輸入一則刊登｜直接與模型估值和替代方案比較</small>
+      </button>
+    </section>
+
+    <section id="budgetPanel" class="workspace panel">
+      <div class="section-heading">
+        <div><span class="step">入口 B</span><h3>預算邊界探索</h3></div>
+        <p>不是列一堆車，而是找出「同一筆錢可以交換到什麼」。</p>
+      </div>
+
+      <div class="controls-grid">
+        <label>
+          <span>預算</span>
+          <div class="money-input"><input id="budgetInput" type="number" min="10" max="500" step="1" value="40" /><b>萬</b></div>
+        </label>
+        <label>
+          <span>車身型式</span>
+          <select id="segmentInput">
+            <option value="SUV">SUV／跨界休旅</option>
+            <option value="Sedan">房車</option>
+            <option value="Hatchback">掀背</option>
+            <option value="All">不限</option>
+          </select>
+        </label>
+        <label>
+          <span>預算彈性</span>
+          <select id="stretchInput">
+            <option value="0">嚴格不超過</option>
+            <option value="5" selected>最多 +5%</option>
+            <option value="10">最多 +10%</option>
+          </select>
+        </label>
+        <button id="runBudget" class="primary-btn">分析預算邊界</button>
+      </div>
+
+      <div id="budgetSummary" class="summary-strip"></div>
+      <div id="frontierResults" class="result-grid"></div>
+    </section>
+
+    <section id="modelPanel" class="workspace panel hidden">
+      <div class="section-heading">
+        <div><span class="step">入口 A</span><h3>指定車款行情</h3></div>
+        <p>先固定車款，再比較年份、里程與未來殘值。</p>
+      </div>
+      <div class="controls-grid model-controls">
+        <label class="wide">
+          <span>車款</span>
+          <input id="modelSearch" list="modelList" placeholder="例如 Toyota Corolla Altis" />
+          <datalist id="modelList"></datalist>
+        </label>
+        <label>
+          <span>年式</span>
+          <input id="modelYear" type="number" min="1990" max="2030" value="2021" />
+        </label>
+        <label>
+          <span>目前里程</span>
+          <div class="money-input"><input id="modelMileage" type="number" min="0" max="100" step="0.1" value="5" /><b>萬 km</b></div>
+        </label>
+        <button id="runModel" class="primary-btn">查同款行情</button>
+      </div>
+      <div id="modelOverview"></div>
+    </section>
+
+    <section id="listingPanel" class="workspace panel hidden">
+      <div class="section-heading">
+        <div><span class="step">入口 C</span><h3>這台車值不值？</h3></div>
+        <p>輸入你看到的刊登條件，與估值基準做價格位置比較。</p>
+      </div>
+      <div class="controls-grid listing-controls">
+        <label class="wide"><span>車款</span><input id="listingModel" list="modelList" placeholder="例如 Nissan Kicks" /></label>
+        <label><span>年式</span><input id="listingYear" type="number" min="1990" max="2030" value="2021" /></label>
+        <label><span>里程</span><div class="money-input"><input id="listingMileage" type="number" min="0" max="100" step="0.1" value="4" /><b>萬 km</b></div></label>
+        <label><span>刊登價</span><div class="money-input"><input id="listingPrice" type="number" min="1" max="1000" step="0.1" value="41" /><b>萬</b></div></label>
+        <button id="runListing" class="primary-btn">比較價格</button>
+      </div>
+      <div id="listingResult"></div>
+    </section>
+
+    <section class="panel roadmap-panel">
+      <div class="section-heading">
+        <div><span class="step">MVP 範圍</span><h3>現在這版已組裝什麼</h3></div>
+      </div>
+      <div class="roadmap-grid">
+        <article><b>Budget Frontier</b><span>預算 → 可買車款／年份／價格帶</span></article>
+        <article><b>Price Intelligence</b><span>刊登價對估值基準的價差</span></article>
+        <article><b>Year Trade-off</b><span>同款車不同年式的價格曲線</span></article>
+        <article><b>Residual Value</b><span>1／3／5 年殘值基準</span></article>
+        <article><b>Data Provenance</b><span>外部估值與示範資料分開標示</span></article>
+        <article><b>Zero-backend</b><span>可直接部署 GitHub Pages</span></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>CarValue TW MVP · 外部估值資料來源：<a href="https://carbook.tw/api/" target="_blank" rel="noreferrer">Carbook 車書公開 API</a>。估值僅供比較參考，不代表實際成交價或車況保證。</p>
+  </footer>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
