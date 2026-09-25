@@ -63,6 +63,18 @@ input:focus, select:focus { outline: 3px solid rgba(21,94,239,.12); border-color
 .roadmap-panel { padding:26px; margin-top:16px; }.roadmap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }.roadmap-grid article { padding:14px; border:1px solid var(--line); border-radius:12px; display:grid; gap:4px; }.roadmap-grid span { color:var(--muted); font-size:12px; }
 .empty { grid-column:1/-1; padding:28px; text-align:center; color:var(--muted); border:1px dashed var(--line); border-radius:14px; }
 .hidden { display:none !important; }
+.provenance-legend,.assumption-note { color:var(--muted); font-size:12px; line-height:1.7; }
+.evidence { display:inline-block; font-size:10px; font-weight:600; border:1px solid var(--line); border-radius:5px; padding:2px 5px; margin-left:5px; vertical-align:middle; }
+.budget-controls { grid-template-columns:1fr 1fr 1fr 1fr auto; }
+.matrix-scroll { overflow-x:auto; margin-top:12px; }
+.matrix-table { border-collapse:collapse; width:100%; min-width:560px; font-size:12px; }
+.matrix-table th,.matrix-table td { border:1px solid var(--line); padding:12px; text-align:right; }
+.matrix-table th { background:var(--accent-soft); }
+.matrix-table caption { text-align:left; padding:8px 0; color:var(--muted); }
+.matrix-table td small { display:block; color:var(--muted); }
+.comparison-section { border-top:1px solid var(--line); margin-top:24px; padding-top:12px; }
+.comparison-section h4 { margin:8px 0; }
+button:disabled { cursor:wait; opacity:.6; }
 footer { border-top:1px solid var(--line); padding:22px max(18px, calc((100vw - 1180px)/2)); color:var(--muted); font-size:11px; line-height:1.55; }
 @media (max-width: 900px) { .hero { grid-template-columns:1fr; }.entry-grid,.result-grid,.roadmap-grid { grid-template-columns:1fr; }.controls-grid,.model-controls,.listing-controls { grid-template-columns:1fr 1fr; }.overview-grid { grid-template-columns:1fr; }.section-heading { display:block; }.section-heading p { margin-top:8px; } }
 @media (max-width: 620px) { .container { width:min(100% - 18px,1180px); margin-top:14px; }.hero,.workspace,.roadmap-panel { padding:18px; }.hero h2 { font-size:36px; }.entry-grid { grid-template-columns:1fr; }.controls-grid,.model-controls,.listing-controls { grid-template-columns:1fr; }.result-grid { grid-template-columns:1fr; }.site-header { padding:10px 12px; }.status-pill { max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; } }

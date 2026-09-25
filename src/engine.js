@@ -25,7 +25,7 @@ export function findModel(models, query) {
 export function yearPricePairs(model) {
   const raw = model?.year_prices_wan || model?.yearPrices || {};
   return Object.entries(raw)
-    .map(([year, price]) => ({ year: Number(year), price: Number(price) }))
+    .map(([year, price]) => ({ year: finiteNumber(year), price: finiteNumber(price) }))
     .filter(x => Number.isFinite(x.year) && Number.isFinite(x.price) && x.price > 0)
     .sort((a,b) => a.year - b.year);
 }
@@ -58,8 +58,8 @@ export function budgetFrontier(models, catalog, budgetWan, segment='All', stretc
 }
 
 export function priceDifference(listingPrice, referencePrice) {
-  const lp = Number(listingPrice), rp = Number(referencePrice);
-  if (!Number.isFinite(lp) || !Number.isFinite(rp) || rp <= 0) return null;
+  const lp = finiteNumber(listingPrice), rp = finiteNumber(referencePrice);
+  if (lp === null || rp === null || lp <= 0 || rp <= 0) return null;
   const diff = lp - rp;
   return { diff, pct: diff / rp * 100 };
 }
@@ -73,12 +73,19 @@ export function pricePosition(pct) {
   return {label:'明顯高於估值基準', tone:'bad'};
 }
 
-export function formatWan(value, digits=1) {
+export function finiteNumber(value) {
+  if (typeof value !== 'number' && typeof value !== 'string') return null;
+  if (typeof value === 'string' && !value.trim()) return null;
   const n = Number(value);
-  return Number.isFinite(n) ? `${n.toFixed(digits)}萬` : '—';
+  return Number.isFinite(n) ? n : null;
+}
+
+export function formatWan(value, digits=1) {
+  const n = finiteNumber(value);
+  return n !== null && n >= 0 ? `${n.toFixed(digits)}萬` : '—';
 }
 
 export function safeResidual(estimate) {
   const raw = estimate?.resale_forecast_wan || estimate?.residual || {};
-  return ['1','3','5'].map(y => ({ years:Number(y), price:Number(raw[y] ?? raw[Number(y)]) })).filter(x => Number.isFinite(x.price));
+  return ['1','3','5'].map(y => ({ years:Number(y), price:finiteNumber(raw[y]) })).filter(x => x.price !== null && x.price > 0);
 }

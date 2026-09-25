@@ -1,0 +1,22 @@
+name: Validate CarValue TW
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: ["feat/carvalue-v0.2"]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate files and run offline tests
+        run: |
+          node scripts/check.mjs
+          node scripts/test-engine.mjs
+          node --test scripts/test-v02.mjs
+          for file in src/*.js scripts/*.mjs; do node --check "$file"; done

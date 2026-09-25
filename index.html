@@ -13,7 +13,7 @@
       <div class="brand-mark">CV</div>
       <div>
         <h1>CarValue TW</h1>
-        <p>中古車價格情報 MVP</p>
+        <p>中古車價格情報 V0.2</p>
       </div>
     </div>
     <div id="sourceStatus" class="status-pill status-loading">載入行情資料…</div>
@@ -50,13 +50,15 @@
       </button>
     </section>
 
+    <p class="provenance-legend">Observed：使用者輸入的刊登價（未查證，不是成交價） · Derived：外部模型或本平台情境估值 · Unknown：缺少資料。示範資料與即時外部基準分開標示。</p>
+
     <section id="budgetPanel" class="workspace panel">
       <div class="section-heading">
         <div><span class="step">入口 B</span><h3>預算邊界探索</h3></div>
         <p>不是列一堆車，而是找出「同一筆錢可以交換到什麼」。</p>
       </div>
 
-      <div class="controls-grid">
+      <div class="controls-grid budget-controls">
         <label>
           <span>預算</span>
           <div class="money-input"><input id="budgetInput" type="number" min="10" max="500" step="1" value="40" /><b>萬</b></div>
@@ -78,6 +80,7 @@
             <option value="10">最多 +10%</option>
           </select>
         </label>
+        <label><span>里程情境</span><div class="money-input"><input id="budgetMileage" type="number" min="0" max="100" step="0.1" value="5" required /><b>萬 km</b></div></label>
         <button id="runBudget" class="primary-btn">分析預算邊界</button>
       </div>
 
@@ -107,6 +110,8 @@
         <button id="runModel" class="primary-btn">查同款行情</button>
       </div>
       <div id="modelOverview"></div>
+      <section id="yearMileageMatrix" aria-live="polite"></section>
+      <section id="modelComparables" aria-live="polite"></section>
     </section>
 
     <section id="listingPanel" class="workspace panel hidden">
@@ -122,6 +127,7 @@
         <button id="runListing" class="primary-btn">比較價格</button>
       </div>
       <div id="listingResult"></div>
+      <section id="listingComparables" aria-live="polite"></section>
     </section>
 
     <section class="panel roadmap-panel">
@@ -129,12 +135,12 @@
         <div><span class="step">MVP 範圍</span><h3>現在這版已組裝什麼</h3></div>
       </div>
       <div class="roadmap-grid">
-        <article><b>Budget Frontier</b><span>預算 → 可買車款／年份／價格帶</span></article>
+        <article><b>Budget Frontier V0.2</b><span>里程情境下的預算邊界與年式升級價差</span></article>
         <article><b>Price Intelligence</b><span>刊登價對估值基準的價差</span></article>
-        <article><b>Year Trade-off</b><span>同款車不同年式的價格曲線</span></article>
+        <article><b>Year × Mileage Matrix</b><span>年式與里程情境估值；假設明示</span></article>
         <article><b>Residual Value</b><span>1／3／5 年殘值基準</span></article>
         <article><b>Data Provenance</b><span>外部估值與示範資料分開標示</span></article>
-        <article><b>Zero-backend</b><span>可直接部署 GitHub Pages</span></article>
+        <article><b>Comparable Engine V0.2</b><span>同級距、相近年式與價格；信心／樣本數明示</span></article>
       </div>
     </section>
   </main>
